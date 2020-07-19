@@ -3,16 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FeatureComponent } from './feature/feature.component';
+import { MyService, ExternalService } from './example/example.genese.tests';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ExternalService, MyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
