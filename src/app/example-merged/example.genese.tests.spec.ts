@@ -1,5 +1,5 @@
 import { MyService } from './example.genese.tests';
-fdescribe('Test genese-tests example', () => {
+describe('Test genese-tests example', () => {
     let service;
     beforeEach(() => {
         service = new MyService(undefined);
