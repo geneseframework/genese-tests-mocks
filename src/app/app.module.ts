@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeatureComponent } from './feature/feature.component';
-import { MyService, ExternalService } from './example/example.genese.tests';
+import { GnExternalService } from './example/gn-external.service';
+import { GnMyService } from './example/gn-my.service';
+import { ExternalService, MyService } from './example-merged/example.genese.tests';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,7 @@ import { MyService, ExternalService } from './example/example.genese.tests';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ExternalService, MyService],
+  providers: [ExternalService, MyService, GnExternalService, GnMyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
