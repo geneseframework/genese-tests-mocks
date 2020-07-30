@@ -2,35 +2,35 @@ import { MyService } from './my.service';
 
 describe('Test genese-tests example', () => {
     let service;
+
     beforeEach(() => {
         service = new MyService(undefined);
         service.externalService = {
-            doSomething: () => {},
-            helloMethod: () => ''
+            helloMethod: () => {},
+            doSomething: () => {}
         }
     });
+
     it('should exist', () => {
         expect(service).toBeTruthy();
     });
-    it('should call doSomething()', () => {
-        spyOn(service.externalService, 'doSomething');
-        service.myMethod('Dark Vador');
-        expect(service.externalService.doSomething).toHaveBeenCalledWith('Dark Vador');
+
+    describe('myMethod', () => {
+        it('should call doSomething()', () => {
+            spyOn(service.externalService, 'helloMethod').and.returnValue('resultHelloMethod');
+            spyOn(service.externalService, 'doSomething');
+            const result = service.myMethod('a');
+            expect(service.externalService.doSomething).toHaveBeenCalledWith('a');
+            expect(service.message).toEqual('resultHelloMethod');
+            expect(result).toEqual(666);
+        });
+        it('should change message value without name', () => {
+            spyOn(service.externalService, 'helloMethod').and.returnValue('resultHelloMethod');
+            const result = service.myMethod(undefined);
+            expect(service.externalService.helloMethod).toHaveBeenCalledWith(' World !');
+            expect(service.message).toEqual('resultHelloMethod');
+            expect(result).toEqual(666);
+        })
     });
-    it('should change message value', () => {
-        spyOn(service.externalService, 'helloMethod').and.returnValue('returnedMessage');
-        service.myMethod('Dark Vador');
-        expect(service.externalService.helloMethod).toHaveBeenCalledWith('Dark Vador');
-        expect(service.message).toEqual('returnedMessage');
-    })
-    it('should change message value without name', () => {
-        spyOn(service.externalService, 'helloMethod').and.returnValue('returnedMessage');
-        service.myMethod('');
-        expect(service.externalService.helloMethod).toHaveBeenCalledWith(' World !');
-        expect(service.message).toEqual('returnedMessage');
-    })
-    it('should return 666', () => {
-        const result = service.myMethod('Dark Vador');
-        expect(result).toEqual(666);
-    })
 });
+
