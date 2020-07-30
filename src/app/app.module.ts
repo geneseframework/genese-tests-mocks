@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeatureComponent } from './feature/feature.component';
-import { GnExternalService } from './example/gn-external.service';
-import { GnMyService } from './example/gn-my.service';
+import { ExternalService } from './example/external.service';
+import { MyService } from './example/my.service';
 import { ExternalService, MyService } from './example-merged/example.genese.tests';
 
 @NgModule({
@@ -17,7 +17,7 @@ import { ExternalService, MyService } from './example-merged/example.genese.test
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ExternalService, MyService, GnExternalService, GnMyService],
+  providers: [ExternalService, MyService, ExternalService, MyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
